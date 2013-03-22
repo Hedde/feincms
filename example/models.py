@@ -24,6 +24,16 @@ Page.register_templates({
         ('sidebar', 'Sidebar', 'inherited'),
         ),
     })
+Page.register_templates({
+    'key': 'double_sidebar',
+    'title': 'Double Sidebar Template',
+    'path': 'double_sidebar.html',
+    'regions': (
+        ('main', 'Main region'),
+        ('sidebar', 'Sidebar', 'inherited'),
+        ('sidebar_2', 'Sidebar 2', 'inherited'),
+        ),
+    })
 Page.create_content_type(RawContent)
 Page.create_content_type(MediaFileContent, TYPE_CHOICES=(
     ('default', 'Default position'),

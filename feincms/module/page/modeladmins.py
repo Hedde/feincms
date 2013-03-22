@@ -13,8 +13,10 @@ from django.http import HttpResponseRedirect
 from django.utils.functional import curry
 from django.utils.translation import ugettext_lazy as _
 
+from feincms import default_settings
 from feincms import ensure_completely_loaded
 from feincms.admin import item_editor, tree_editor
+from feincms.utils.widgets import ThumbnailSelect
 
 # ------------------------------------------------------------------------
 from .forms import PageAdminForm
@@ -91,6 +93,8 @@ class PageAdmin(item_editor.ItemEditor, tree_editor.TreeEditor):
 
     def get_form(self, *args, **kwargs):
         form = super(PageAdmin, self).get_form(*args, **kwargs)
+        if getattr(django_settings, 'FEINCMS_VISUAL_TEMPLATES', False):
+            form.base_fields['template_key'].widget = ThumbnailSelect(choices=form.base_fields['template_key'].choices)
         return curry(form, modeladmin=self)
 
     def _actions_column(self, page):

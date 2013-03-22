@@ -13,9 +13,9 @@ if(!Array.indexOf) {
     // Patch up urlify maps to generate nicer slugs in german
     if(typeof(Downcoder) != "undefined"){
         Downcoder.Initialize() ;
-        Downcoder.map["ö"] = Downcoder.map["Ö"] = "oe";
-        Downcoder.map["ä"] = Downcoder.map["Ä"] = "ae";
-        Downcoder.map["ü"] = Downcoder.map["Ü"] = "ue";
+        Downcoder.map["Ã¶"] = Downcoder.map["Ã–"] = "oe";
+        Downcoder.map["Ã¤"] = Downcoder.map["Ã„"] = "ae";
+        Downcoder.map["Ã¼"] = Downcoder.map["Ãœ"] = "ue";
     }
 
     function feincms_gettext(s) {
@@ -132,7 +132,7 @@ if(!Array.indexOf) {
 
     function add_fieldset(region_id, item, how){
         /* `how` should be an object.
-           `how.where` should be one of:
+         `how.where` should be one of:
          - 'append' -- last region
          - 'prepend' -- first region
          - 'insertBefore' -- insert before relative_to
@@ -268,9 +268,9 @@ if(!Array.indexOf) {
 
     function hide_form_rows_with_hidden_widgets(){
         /* This is not normally done in django -- the fields are shown
-           with visible labels and invisible widgets, but FeinCMS used to
-           use custom form rendering to hide rows for hidden fields.
-           This is an attempt to preserve that behaviour. */
+         with visible labels and invisible widgets, but FeinCMS used to
+         use custom form rendering to hide rows for hidden fields.
+         This is an attempt to preserve that behaviour. */
         $('div.feincms_inline div.form-row').each(function(){
             var child_count = $(this).find('*').length;
             var invisible_types = 'div, label, input[type=hidden], p.help';
@@ -415,7 +415,13 @@ if(!Array.indexOf) {
 
         function on_template_key_changed(){
             var input_element = this;
-            var new_template = this.value;
+
+            if ($(input_element).is("img") === true) {
+                input_element = this.parentNode.getElementsByTagName('input')[0];
+                new_template = this.parentNode.getElementsByTagName('input')[0].value;
+            } else {
+                var new_template = this.value;
+            }
 
             if(current_template==new_template)
                 // Selected template did not change
@@ -473,6 +479,8 @@ if(!Array.indexOf) {
         template_key_radio.click(on_template_key_changed);
         var template_key_select = $('select[name=template_key]');
         template_key_select.change(on_template_key_changed);
+        var template_key_image = $('ul.thumbnail_select_widget img');
+        template_key_image.click(on_template_key_changed);
 
         // Save template key's original value for easy restore if the user cancels the change.
         template_key_radio.data('original_value', template_key_radio.val());

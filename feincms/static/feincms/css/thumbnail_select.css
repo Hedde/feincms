@@ -1,0 +1,28 @@
+ul.thumbnail_select_widget li {
+    border: 3px solid transparent;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    list-style: none;
+}
+
+ul.thumbnail_select_widget li img {
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+
+ul.thumbnail_select_widget li.inactive img {
+    border: 3px solid #ccc;
+}
+
+ul.thumbnail_select_widget li.inactive:hover img {
+    border: 3px solid #7CA0C7;
+}
+
+ul.thumbnail_select_widget li.inactive {
+    cursor: pointer;
+}
+
+ul.thumbnail_select_widget li.active img {
+    border: 3px solid #417690;
+}
