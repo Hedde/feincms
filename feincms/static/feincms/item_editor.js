@@ -13,9 +13,9 @@ if(!Array.indexOf) {
     // Patch up urlify maps to generate nicer slugs in german
     if(typeof(Downcoder) != "undefined"){
         Downcoder.Initialize() ;
-        Downcoder.map["Ã¶"] = Downcoder.map["Ã–"] = "oe";
-        Downcoder.map["Ã¤"] = Downcoder.map["Ã„"] = "ae";
-        Downcoder.map["Ã¼"] = Downcoder.map["Ãœ"] = "ue";
+        Downcoder.map["ö"] = Downcoder.map["Ö"] = "oe";
+        Downcoder.map["ä"] = Downcoder.map["Ä"] = "ae";
+        Downcoder.map["ü"] = Downcoder.map["Ü"] = "ue";
     }
 
     function feincms_gettext(s) {
