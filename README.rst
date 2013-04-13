@@ -1,3 +1,8 @@
+This fork opts in an inheritable way of visualizing template choices for pages using little code.
+
+See: https://github.com/feincms/feincms/issues/242
+
+
 ========================================
 FeinCMS - An extensible Django-based CMS
 ========================================
