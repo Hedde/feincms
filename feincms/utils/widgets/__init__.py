@@ -18,7 +18,7 @@ class ThumbnailRenderer(RadioFieldRenderer):
                 <span style="display:none">%s</span>
             </li>
             """ % (_is_active(w.choice_value, self.value),
-                   force_unicode(w.choice_value.split('.')[0]),
+                   force_unicode(w.choice_value),
                    force_unicode(w)) for w in self])
         )
 
